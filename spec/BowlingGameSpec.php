@@ -6,6 +6,11 @@ use PhpSpec\ObjectBehavior;
 
 class BowlingGameSpec extends ObjectBehavior
 {
+    public function it_throws_an_exception_with_invalid_rolls()
+    {
+        $this->shouldThrow('InvalidArgumentException')->duringRoll(-5);
+    }
+
     public function it_scores_a_gutter_game_as_zero()
     {
         $this->rollTimes(20, 0);

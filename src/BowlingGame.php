@@ -6,6 +6,8 @@ class BowlingGame
 
     public function roll($pins)
     {
+        $this->guardAgainstNegativeValues($pins);
+
         $this->rolls[] = $pins;
     }
 
@@ -57,5 +59,12 @@ class BowlingGame
     protected function spareBonus($roll)
     {
         return $this->rolls[$roll + 2];
+    }
+
+    protected function guardAgainstNegativeValues($pins)
+    {
+        if ($pins < 0) {
+            throw new InvalidArgumentException;
+        }
     }
 }
